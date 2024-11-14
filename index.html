@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Network Visualization</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="network.js"></script>
+    <style>
+        #title {
+            text-align: center;
+            margin-top: 3.5rem;
+        }
+        #controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        #legend {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .tooltip {
+            position: absolute;
+            visibility: hidden;
+            background: lightgrey;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Major_Assignment_3</h1>
+
+    <div id="author-tooltip" class="tooltip"></div>
+
+    <script>
+        d3.json("data_scopus.json").then(function (data) {
+            let svg = d3.select('body').append("svg").attr("viewBox", "0 0 1000 800");
+
+            simulate(data, svg); 
+        });
+    </script>
+
+    <div id="controls"></div>
+        
+    </div>
+</body>
+</html>
